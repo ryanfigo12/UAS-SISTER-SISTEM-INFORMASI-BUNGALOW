@@ -1,0 +1,385 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dokumentasi API Seabreeze Bungalow",
+        "description": "API ini digunakan untuk Data Post Bungalow",
+        "contact": {
+            "email": "hi.ryanfigo13@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://seabreezebungalow/api/bungalow",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/get-post": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Mendapatkan Post",
+                "description": "Return Post",
+                "operationId": "get-post",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "meta": {
+                                        "code": 200,
+                                        "status": "success",
+                                        "message": "Post data Retrieved successfully!"
+                                    },
+                                    "data": [
+                                        {
+                                            "photo": "bungalow.jpg",
+                                            "heading": "The best bungalow",
+                                            "short_content": "Bungalow yang berada pada singaraja lovina",
+                                            "content": "Seabreeze bungalow ini terletak di jalan pantai binaria lovina yang memiliki 2 tipe kamar",
+                                            "total_view": "5",
+                                            "created_at": "2022-06-26 09:27:07",
+                                            "Updated_at": "2022-06-26 13:31:19",
+                                            "id": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/post": {
+            "post": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Menambahkan postingan baru",
+                "description": "Menambahkan postingan baru dengan foto, judul, konten singkat, dan konten lengkap",
+                "operationId": "4127f2a285a6617f685641e5ed4ecaa0",
+                "parameters": [
+                    {
+                        "name": "photo",
+                        "in": "query",
+                        "description": "Foto postingan (jpg, jpeg, png, gif)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "binary"
+                        }
+                    },
+                    {
+                        "name": "heading",
+                        "in": "query",
+                        "description": "Judul postingan",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "short_content",
+                        "in": "query",
+                        "description": "Konten singkat postingan",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "Konten lengkap postingan",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "meta": {
+                                            "properties": {
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "200"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "example": "success"
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Post is added successfully!"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "photo": {
+                                                    "type": "string",
+                                                    "example": "bungalow.jpg"
+                                                },
+                                                "heading": {
+                                                    "type": "string",
+                                                    "example": "The best bungalow"
+                                                },
+                                                "short_content": {
+                                                    "type": "string",
+                                                    "example": "Bungalow yang berada pada singaraja lovina"
+                                                },
+                                                "content": {
+                                                    "type": "string",
+                                                    "example": "Seabreeze bungalow ini terletak di jalan pantai binaria lovina yang memiliki 2 tipe kamar "
+                                                },
+                                                "total_view": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2022-06-26 09:27:07"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2022-06-26 13:31:19"
+                                                },
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/post/{id}": {
+            "put": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Update postingan",
+                "description": "Mengubah informasi postingan dengan foto, judul, konten singkat, dan konten lengkap",
+                "operationId": "6ac77207ae9da7f041c4900b3eaa4dcc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID postingan yang akan diupdate",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "photo",
+                        "in": "query",
+                        "description": "Foto postingan (jpg, jpeg, png, gif)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "binary"
+                        }
+                    },
+                    {
+                        "name": "heading",
+                        "in": "query",
+                        "description": "Judul postingan",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "short_content",
+                        "in": "query",
+                        "description": "Konten singkat postingan",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "Konten lengkap postingan",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "meta": {
+                                            "properties": {
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "200"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "example": "success"
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Post is updated successfully!"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "photo": {
+                                                    "type": "string",
+                                                    "example": "bungalow.jpg"
+                                                },
+                                                "heading": {
+                                                    "type": "string",
+                                                    "example": "The best bungalow"
+                                                },
+                                                "short_content": {
+                                                    "type": "string",
+                                                    "example": "Bungalow lovina"
+                                                },
+                                                "content": {
+                                                    "type": "string",
+                                                    "example": "Seabreeze bungalow ini terletak di jalan pantai binaria lovina yang memiliki 7 Kamar "
+                                                },
+                                                "total_view": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2022-06-26 09:27:07"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2022-06-26 14:30:20"
+                                                },
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Hapus postingan",
+                "description": "Menghapus postingan berdasarkan ID",
+                "operationId": "5624543a7afe9453efc2f1cecf23b113",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID postingan yang akan dihapus",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "meta": {
+                                            "properties": {
+                                                "code": {
+                                                    "type": "integer",
+                                                    "example": "200"
+                                                },
+                                                "status": {
+                                                    "type": "string",
+                                                    "example": "success"
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Post is deleted successfully!"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    }
+}
